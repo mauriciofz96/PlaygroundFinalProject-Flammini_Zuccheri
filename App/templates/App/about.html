@@ -1,0 +1,31 @@
+{% extends "App/padre.html" %}
+
+{% load static %}
+
+{% block logo %}
+{% endblock %}
+
+{% block body %}
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                {% if teammembers %}
+                <h1>Sobre mi</h1>
+                <p class="lead mb-0">Este blog fue creado en el marco del proyecto final del curso de Python de CoderHouse. La temática pensada fue la de un blog para destacar y recomendar discos y música, a modo de una base de datos en la que se puede obtener información de las bandas, discos e integrantes, entre otros detalles.</p>
+                
+                <p class="lead mb-0">Creador</p>
+                    <ul>
+                        {% for teammember in teammembers%}
+                                <li> {{teammember.name}} {{teammember.lastname}} </li>
+                                <li> {{teammember.email}} </li>
+                                <li> {{teammember.githubaccount}} </li>
+                                <br>
+                        {% endfor %}
+                    </ul>   
+                {% else %}
+                    <h1>No team members were added yet</h1>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+{% endblock %}

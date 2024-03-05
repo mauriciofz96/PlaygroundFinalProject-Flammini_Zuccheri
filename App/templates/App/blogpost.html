@@ -1,0 +1,33 @@
+{% extends "App/padre.html" %}
+{% load static %}
+
+{% block logo %}
+{% endblock %}
+
+{% block body %}
+{% if blogposts %} 
+<div class="row">
+    {% for blogpost in blogposts %}
+        <!-- Blog post-->
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">Title: {{ blogpost.title }}</h2>
+                    <h4 class="card-title h4">Subtitle: {{ blogpost.subtitle }}</h4>
+                    <div class="small text-muted">Category: {{ blogpost.category }}</div>
+                    <p class="card-text">Content: {{ blogpost.content }}</p>
+                    <p class="card-text">Publication Date: {{ blogpost.publication_date }}</p>
+                    <p class="card-text">Author: {{ blogpost.author }}</p>
+                    {% if blogpost.image %}
+                        <img src="{{ blogpost.image.url }}" alt="Image" class="img-fluid">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+    <h1>El post no fue encontrado</h1>
+{% endif %}
+{% endblock %}
+ 
